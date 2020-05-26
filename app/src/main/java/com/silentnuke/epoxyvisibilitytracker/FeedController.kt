@@ -14,9 +14,15 @@ class FeedController(val callbacks: FeedAdapterCallbacks) : TypedEpoxyController
             }
         }
 
-        if (state.loadingMoreState != LoadingState.IDLE) {
+        if (state.loadingMoreState == LoadingState.LOADING) {
             loadingMore {
-                // NOTE: if we change id, visibility is triggered id(LOAD_MORE + state.loadingMoreState)
+                id(LOAD_MORE)
+                loadingState(state.loadingMoreState)
+                callbacks(callbacks)
+            }
+        }
+        if (state.loadingMoreState == LoadingState.ERROR) {
+            errorMore {
                 id(LOAD_MORE)
                 loadingState(state.loadingMoreState)
                 callbacks(callbacks)
