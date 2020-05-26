@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EpoxyVisibilityTracker</string>
+    <string name="error_text">Failed to load image</string>
+    <string name="fail_load_more">Fail load more</string>
+    <string name="loading">Загрузка…</string>
+    <string name="retry">Retry</string>
+</resources>
