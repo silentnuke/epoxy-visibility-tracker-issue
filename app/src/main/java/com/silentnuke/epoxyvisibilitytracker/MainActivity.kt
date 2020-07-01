@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     val result = mutableListOf<String>()
                     for (i in 1..(feedStateLiveData.value!!.items.size + 10)) {
-                        result.add("https://i.picsum.photos/id/${i}/200/300.jpg")
+                        result.add("https://picsum.photos/id/${i}/200/300.jpg")
                     }
                     result
                 }
