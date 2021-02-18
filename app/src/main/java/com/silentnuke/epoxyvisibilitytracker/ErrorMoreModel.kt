@@ -1,6 +1,6 @@
 package com.silentnuke.epoxyvisibilitytracker
 
-import android.view.View
+import android.widget.TextView
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyAttribute.Option.DoNotHash
 import com.airbnb.epoxy.EpoxyModelClass
@@ -9,10 +9,8 @@ import com.airbnb.epoxy.VisibilityState
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
-const val LOAD_MORE = "loadingMore"
-
-@EpoxyModelClass(layout = R.layout.item_loading_more)
-abstract class LoadingMoreModel : EpoxyModelWithHolder<LoadingMoreHolder>() {
+@EpoxyModelClass(layout = R.layout.item_error_more)
+abstract class ErrorMoreModel : EpoxyModelWithHolder<ErrorMoreHolder>() {
 
     @EpoxyAttribute
     lateinit var loadingState: LoadingState
@@ -20,11 +18,11 @@ abstract class LoadingMoreModel : EpoxyModelWithHolder<LoadingMoreHolder>() {
     @EpoxyAttribute(DoNotHash)
     lateinit var callbacks: FeedAdapterCallbacks
 
-    override fun bind(holder: LoadingMoreHolder) {
-        Timber.d("bind $loadingState LoadingMoreModel(${this.hashCode()}) LoadingMoreHolder(${holder.hashCode()})")
+    override fun bind(holder: ErrorMoreHolder) {
+        Timber.d("bind $loadingState ErrorMoreModel(${this.hashCode()}) ErrorMoreHolder(${holder.hashCode()})")
     }
 
-    override fun onVisibilityStateChanged(visibilityState: Int, holder: LoadingMoreHolder) {
+    override fun onVisibilityStateChanged(visibilityState: Int, holder: ErrorMoreHolder) {
         super.onVisibilityStateChanged(visibilityState, holder)
 
         when (visibilityState) {
@@ -44,6 +42,6 @@ abstract class LoadingMoreModel : EpoxyModelWithHolder<LoadingMoreHolder>() {
     }
 }
 
-class LoadingMoreHolder : KotlinEpoxyHolder() {
-    val loadingView by bind<View>(R.id.loading)
+class ErrorMoreHolder : KotlinEpoxyHolder() {
+    val errorTextView by bind<TextView>(R.id.error)
 }
